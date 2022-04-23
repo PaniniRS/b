@@ -39,8 +39,7 @@ browser.implicitly_wait(15)
 loginModeSwitch = browser.find_element(By.CLASS_NAME, "jss49")
 print(loginModeSwitch)
 loginModeSwitch.click()
-time.sleep(6)
-
+time.sleep(4)
 #finds email and pw elements
 email = browser.find_element(By.ID, "email")
 password = browser.find_element(By.ID, "password")
@@ -49,11 +48,12 @@ email.send_keys(INPUT_EMAIL)
 time.sleep(5)
 password.send_keys(INPUT_PASSWORD)
 time.sleep(5)
-
+#clicks the login button
 login_button = browser.find_element(By.XPATH, "//*[contains(text(),'Log In')]").find_element(By.XPATH, "./..")
 login_button.click()
 time.sleep(5)
 
+#idk what this does ngl
 # for request in browser.requests:
 #     logging.info("REQUEST: %s", request.path)
 #     if request.method == 'POST' and request.path == '/s/auth_up':
