@@ -52,22 +52,22 @@ time.sleep(5)
 login_button = browser.find_element(By.XPATH, "//*[contains(text(),'Log In')]").find_element(By.XPATH, "./..")
 login_button.click()
 time.sleep(5)
-print("Logged in successfully")
+logging.info("Logged in successfully")
 time.sleep(15)
 
 #idk what this does ngl
-# for request in browser.requests:
-#     logging.info("REQUEST: %s", request.path)
-#     if request.method == 'POST' and request.path == '/s/auth_up':
-#         body = request.body.decode('utf-8')
-#         req = json.loads(body)['content']
-#         auth_up["content"]["email"] = INPUT_EMAIL
-#         auth_up["content"]["pwd"] = INPUT_PASSWORD
-#         auth_up["content"]["token"] = req['token']
+for request in browser.requests:
+    logging.info("REQUEST: %s", request.path)
+    if request.method == 'POST' and request.path == '/s/auth_up':
+        body = request.body.decode('utf-8')
+        req = json.loads(body)['content']
+        auth_up["content"]["email"] = INPUT_EMAIL
+        auth_up["content"]["pwd"] = INPUT_PASSWORD
+        auth_up["content"]["token"] = req['token']
 
-#         response_object = json.loads(gzip.decompress(request.response.body))
-#         auth_headers["x-app-auth"]["user"] = username = response_object["result"]['user']['username']
-#         auth_headers["x-app-auth"]["token"] = response_object["result"]["token"]
+        response_object = json.loads(gzip.decompress(request.response.body))
+        auth_headers["x-app-auth"]["user"] = username = response_object["result"]['user']['username']
+        auth_headers["x-app-auth"]["token"] = response_object["result"]["token"]
 
 # if FOLLOW:
 #     user_count = 0
@@ -80,10 +80,13 @@ time.sleep(15)
 #             user_count += 1
 
 if FOLLOWFROMLIST: 
+    i = 1
     user_count = 0
     browser.get(LIST_URL)
     while user_count < MAX_FOLLOWS_PER_DAY:
         followButtons = browser.find_elements(By.CLASS_NAME, "js234") #finds all the follow buttons
+        logging.info(followButtons)
+        time.sleep(2)
         for i in range(MAX_FOLLOWS_PER_DAY):
             followButton = followButtons[i]
             if followButton.text == "Follow":
