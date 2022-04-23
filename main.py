@@ -52,6 +52,8 @@ time.sleep(5)
 login_button = browser.find_element(By.XPATH, "//*[contains(text(),'Log In')]").find_element(By.XPATH, "./..")
 login_button.click()
 time.sleep(5)
+print("Logged in successfully")
+time.sleep(15)
 
 #idk what this does ngl
 # for request in browser.requests:
@@ -79,10 +81,13 @@ time.sleep(5)
 
 if FOLLOWFROMLIST: 
     user_count = 0
-    browser.get("LISTURL")
+    browser.get(LIST_URL)
     while user_count < MAX_FOLLOWS_PER_DAY:
+        followButtons = browser.find_elements(By.CLASS_NAME, "js234") #finds all the follow buttons
         for i in range(MAX_FOLLOWS_PER_DAY):
-            followButton = browser.find_element_by_css_selector("div:nth-child(%i) > a .MuiButton-label" , i)
+            followButton = followButtons[i]
             if followButton.text == "Follow":
                 followButton.click();
                 logging.info("Followed %d person\n",i)
+                user_count = user_count + 1
+        
