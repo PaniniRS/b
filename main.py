@@ -8,8 +8,8 @@ import logging
 import sqlite3
 from var import *
 
-userAcc = ["TmrwsAmerica","ClaudeDavisFans", "PatMAGA2024", "FJBTruth", "paninirs@gmail.com", "patriotsworld2022@gmail.com"]
-userPw = ["vesti01..", "World2022$"]
+userAcc = [""]
+userPw = [""]
 
 LIST_URL = "https://www.gettr.com/user/retirewcashflow/following"
 INPUT_EMAIL = userAcc[0]
