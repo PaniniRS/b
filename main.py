@@ -81,9 +81,9 @@ if FOLLOWFROMLIST:
     i = 1
     user_count = 0
     browser.get(LIST_URL)
-    while user_count < MAX_FOLLOWS_PER_DAY:
-        followButtons = browser.find_elements(By.CLASS_NAME, "js234") #finds all the follow buttons
-        logging.info(followButtons)
+    followButtons = browser.find_elements(By.CLASS_NAME, "js234") #finds all the follow buttons
+    logging.info(followButtons)
+    while user_count < MAX_FOLLOWS_PER_DAY:   
         time.sleep(2)
         for i in range(MAX_FOLLOWS_PER_DAY):
             followButton = followButtons[i]
