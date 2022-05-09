@@ -8,7 +8,6 @@ import logging
 import sqlite3
 from var import *
 
-# TODO: CHANGE THIS
 userAcc = ["TmrwsAmerica","ClaudeDavisFans", "PatMAGA2024", "FJBTruth", "paninirs@gmail.com", "patriotsworld2022@gmail.com"]
 userPw = ["vesti01..", "World2022$"]
 
@@ -55,7 +54,6 @@ time.sleep(5)
 logging.info("Logged in successfully")
 time.sleep(15)
 
-#idk what this does ngl
 for request in browser.requests:
     logging.info("REQUEST: %s", request.path)
     if request.method == 'POST' and request.path == '/s/auth_up':
